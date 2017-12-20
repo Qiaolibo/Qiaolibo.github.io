@@ -74,7 +74,7 @@ This transformation is called an extrinsic matrix(外部矩阵) of a camera. Thi
 
 ### Final Demo
 Finally, we invited our classmates to try our creation which bring a brand new experience.
-<video width="658" height="380" src="IDVR.mp4" controls="controls"></video>
+<video width="658" height="380" src="/assets/img/2017-01-16-InteractionDesign/IDVR.mp4" controls="controls"></video>
 
 ### Team members
 ![alt text](/assets/img/2017-01-16-InteractionDesign/team.jpg)
