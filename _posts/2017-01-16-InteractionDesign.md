@@ -1,10 +1,13 @@
 ---
-title: Interaction Design & Collaborative VR
+layout: post
+title: "Interaction Design & Collaborative VR"
+author: "乔黎博"
+categories: Design
 date: 2017-01-16 16:21:20
-tags:
+tags: [VR,UX]
+image: mountains.jpg
 ---
 
-{% asset_img VRs.png 封面 %}
 To discover more possibilities in interaction design field, we try to combine different advanced device as mush as we can, to create a realistic experience, even beyond reality, and make the interaction process smoothly.
 
 
