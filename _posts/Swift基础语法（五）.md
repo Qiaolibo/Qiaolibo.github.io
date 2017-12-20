@@ -1,0 +1,225 @@
+---
+
+layout: post
+title: "Swift基础语法（五）"
+author: "乔黎博"
+categories: Coding
+date: 2016-5-17 15:24:00
+tags: [Swift]
+image: 2016-05-17-Swift基础语法（五）/page.jpg
+
+---
+
+![alt text](/assets/img/2016-05-17-Swift基础语法（五）/page.jpg)
+
+
+本篇作为Swift的第四篇，主要介绍了Swift中的枚举类型，它和其它语言相比有其特殊性
+
+
+本篇作为Swift的第四篇，主要简述Swift中的属性、方法
+
+<!-- more -->
+
+## 属性（Properties）
+
+> Properties are variables and constants that comprise the attributes of a named type.
+
+### 可存储属性（stored properties）
+- 这些属性为每一个实例分配内存，存储其真实的值
+- 只有类和结构体可以有stored properties
+  ```
+    //Contact有两个存储属性
+    struct Contact {
+      var fullName: String
+      var emailAddress: String
+    }
+
+    //Swift会根据你定义的属性自动创建一个初始化器
+     var person = Contact(fullName: "乔黎博",
+     emailAddress: "qiaolibo@yeah.net")
+
+     //用点语法存取每个属性
+      let name = person.fullName
+      let email = person.emailAddress
+
+      person.fullName = "Qiao"
+  ```
+
+### 默认值（Default values）
+- 属性可以设置默认值
+- 自动合成的初始化器不会包含默认值，除非你自己声明自己的初始化器
+  ```
+    enum Type {
+      case Work, Family, Friend
+    }
+    struct Contact {
+      var fullName: String
+      let emailAddress: String
+      var type: Type = .Friend
+    }
+  ```
+
+### 可计算属性（computed properties）
+- 这些属性没有为他们实际分配内存，它不存储任何值，而是在 *每次存取* 的时候被计算出来，然后返回一个值
+- 类、结构体和枚举都可以有computed properties
+- 计算属性赋值用花括号（`{}`）里的代码段取代等号（`=`）
+- 存取计算属性和存取存储属性类似
+  ```
+      //电视尺寸的结构体
+      struct TV {
+        var height: Double
+        var width: Double
+        // 计算属性
+        var diagonal: Int {
+
+          let aSquared = pow(height, 2)
+          let bSquared = pow(width, 2)
+          let cSquared = aSquared + bSquared
+
+          let c = sqrt(cSquared)
+          // 四舍五入，直接转Int会截断
+          let rounded = round(c)
+
+          return Int(rounded)
+        }
+      }
+
+     var tv = TV(height: 53.93, width: 95.87)
+     let size = tv.diagonal
+  ```
+
+### Getter和Setter
+- 如果想要定义setter，则getter必须显示声明，以便区分那个是getter，哪个是setter
+- setter没有地方存值，因此它间接设置存储属性（stored properties）
+- `newValue` 关键字代表在赋值时传入的数据
+  ```
+    var diagonal: Int {
+
+      get {
+          return Int(round(sqrt(height * height + width * width)))
+        }
+
+      //每次设置diagonal时，都会计算并存储height和width
+      set {
+          // 默认值
+          let ratioWidth: Double = 16
+          let ratioHeight: Double = 9
+          // 计算结束后，高度和宽度属性被赋值
+          height = Double(newValue) * ratioHeight / sqrt(ratioWidth * ratioWidth + ratioHeight * ratioHeight)
+          width = height * ratioWidth / ratioHeight
+        }
+    }
+
+    tv.diagonal = 70
+    let height = tv.height // 34.32...
+    let width = tv.width // 61.01...
+  ```
+
+### 类型属性（Type properties）
+- 以上属性在每一个实例的属性都是分离的，也就是每一个实例都有各自的属性值，但是在需要这些实例之间共同的属性时就需要Type properties（type itself may also need properties that are common across all instances）
+- 在值类型（value-based types like structures）前使用 `static` 关键字声明一个Type properties
+  ```
+    //游戏关卡的例子，每一关不同状态
+    struct Level {
+      static var highestLevel = 1
+      let id: Int
+      var boss: String
+      var unlocked: Bool
+    }
+    let level1 = Level(id: 1, boss: "Chameleon", unlocked: true)
+    let level2 = Level(id: 2, boss: "Squid", unlocked: false)
+    let level3 = Level(id: 3, boss: "Chupacabra", unlocked: false)
+    let level4 = Level(id: 4, boss: "Yeti", unlocked: false)
+
+    //存取
+    let highestLevel = level3.highestLevel //错误，类型属性不应在实例上存取
+    let highestLevel = Level.highestLevel  //1
+  ```
+
+### 单例模式（Singleton pattern）
+> Using Singleton is a powerful way to share data between different parts of your code without having to pass the
+ data around manually.
+
+- 一种实现单例的方法是使用常类型属性 `static let`
+- 必须将单例声明为引用类型，而不是值类型。声明为值类型将不能改变里面的属性
+  ```
+    //You must declare a singleton as a reference-type class rather than a value-type structure.
+    //If you were to implement one as a structure, then you wouldn't be able to change the values of gameScore and saveState later because the defaultManager property is a constant.
+    //When you declare GameManager as a class, only its address in memory is a constant rather than the values themselves.
+    // You can change the values of gameScore and saveState since GameManager is a reference-type class.
+    class GameManager {
+      static let defaultManager = GameManager() //默认值值一个新的GameManager实例
+      var gameScore = 0
+      var saveState = 0
+      // 私有初始化意味着类实例只被初始化一次，在外部没有其他方法对其初始化
+      private init() {}
+    }
+  ```
+
+### 属性观察（Property observers）
+> a way to listen to property changes
+
+- 属性监听器（property observers）：`willSet {}` 会在属性变化之前调用，`didSet {}` 会在属性变化之后调用，用法和 `set {}` `get {}` 类似
+- `willSet {}` 和 `didSet {}`不会在初始化过程中调用，只有当你对一个初始化过的实例赋新值时才会调用，这意味着property observers只会用在可变属性（variable properties），因为常量属性（constant properties）只会在初始化过程中被置值
+  ```
+      struct Level {
+      static var highestLevel = 1
+      let id: Int
+      var boss: String
+      var unlocked: Bool {
+        didSet {
+          //可以在didSet{}的实现中使用unlocked
+          //即使已经在类型里了，也必须写全名：Level.highestLevel而不是highestLevel
+          //unlocked是存储属性而不是计算属性，因为没有提供 get {}
+          if unlocked && id > Level.highestLevel {
+            Level.highestLevel = id
+          }
+        }
+      }
+    }
+  ```
+
+### 限制变量（Limiting a variable）
+- 可以在 `willSet` 中使用 `newValue`，在 `didSet` 中使用 `oldValue`
+```
+  //if the current flowing into the bulb exceeds the maximum value, it will revert to its last successful value.
+  //Notice there's a helpful oldValue constant available in didSet {} so you can access the previous value
+  class LightBulb {
+    static let maxCurrent = 40
+    var currentCurrent = 0 {
+      didSet {
+        if currentCurrent > LightBulb.maxCurrent {
+          print("Current too high, falling back to previous setting.")
+          currentCurrent = oldValue
+        }
+      }
+    }
+  }
+```
+
+### 延迟加载属性（lazy stored property）
+> The lazy keyword prevents a value of a stored property from being calculated until your code uses it for the first time. You'll want to use lazy initialization when a property's initial value is computationally intensive or when you won't know the initial value of a property until after you've initialized the object.
+
+- 关键字 `lazy` 声明这种属性，必须声明为 `var` 而不是 `let`（初始化类时lazy属性没有值，用到它时runtime会改变他的值）
+- 在下载用户头像或者大量计算时是一种可能的使用情景，只有在被用到时才被计算
+```
+  class Circle {
+    //pi是存储属性
+    //{ }() is the pattern for a closure that is evaluated immediately, and you use it for lazy properties or to add computation to a stored property
+    lazy var pi = {
+      return ((4.0 * atan(1.0 / 5.0)) - atan(1.0 / 239.0)) * 4.0
+      }()  //"{}()"代表立即执行，但是声明为lazy后不会立即执行，存取它时它才被计算，但是只被计算一次
+    var radius: Double = 0
+    var circumference: Double {
+      return pi * radius * 2
+    }
+    init (radius: Double) {
+      self.radius = radius
+    }
+  }
+
+  let circle = Circle(radius: 5) // got a circle, pi has not been run
+  let circumference = circle.circumference // also, pi now has a value
+```
+
+## 方法（Methods）
