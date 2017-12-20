@@ -10,9 +10,6 @@ image: 2016-05-17-Swift基础语法（五）/page.jpg
 
 ---
 
-![alt text](/assets/img/2016-05-17-Swift基础语法（五）/page.jpg)
-
-
 本篇作为Swift的第四篇，主要介绍了Swift中的枚举类型，它和其它语言相比有其特殊性
 
 
