@@ -5,9 +5,10 @@ author: "乔黎博"
 categories: Design
 date: 2017-01-16 16:21:20
 tags: [VR,UX]
-image: mountains.jpg
+image: VRs.png
 ---
 
+![alt text](2017-01-16-InteractionDesign/VRs.png)
 To discover more possibilities in interaction design field, we try to combine different advanced device as mush as we can, to create a realistic experience, even beyond reality, and make the interaction process smoothly.
 
 
@@ -16,64 +17,65 @@ To discover more possibilities in interaction design field, we try to combine di
 # An idea hexagon - Solution-driven approach
 ### Finding the neXt
 The hexagon provide a systematic way to generate many unique solutions
-{% asset_img hexagon.jpg hexagon %}
+![alt text](2017-01-16-InteractionDesign/hexagon.jpg)
 
 #### Three principles
 - Start with something new, interesting, never seen before.
 - Iterate quick. by looking for variations of solutions and problems.
 - Give up soutions quick.
-{% asset_img invent_method.jpg nvent_method %}
+![alt text](2017-01-16-InteractionDesign/invent_method.jpg)
 
 #### An example of the creative ideas when using camera
-{% asset_img example.jpg example %}
+![alt text](2017-01-16-InteractionDesign/example.jpg)
 
 ### Rotoscoping
 An animation technique in which animators trace over footage, frame by frame, for use in live-action and animated movies.
-{% asset_img rotoscoping.jpg rotoscoping %}
-{% asset_img rotoscoping2.jpg rotoscoping %}
+![alt text](2017-01-16-InteractionDesign/rotoscoping.jpg)
+![alt text](2017-01-16-InteractionDesign/rotoscoping2.jpg)
 
 ### 360 Camera
-{% asset_img 3601.jpg 360 %}
-{% asset_img 3602.jpg 360 %}
-{% asset_img 3603.jpg 360 %}
-{% asset_img 3604.jpg 360 %}
-{% asset_img 360.jpg 360 %}
+![alt text](2017-01-16-InteractionDesign/3601.jpg)
+![alt text](2017-01-16-InteractionDesign/3602.jpg)
+![alt text](2017-01-16-InteractionDesign/3603.jpg)
+![alt text](2017-01-16-InteractionDesign/3604.jpg)
+![alt text](2017-01-16-InteractionDesign/360.jpg)
 
 ### OSC(Open Sound Control)
 #### Arduino integration
-{% asset_img osc_arduino.gif osc_arduino %}
+![alt text](2017-01-16-InteractionDesign/osc_arduino.gif)
 
 #### vibration actuator
-{% asset_img vibration.jpg vibration_actuator %}
+![alt text](2017-01-16-InteractionDesign/vibration.jpg)
 
 ### Leap Motion
-{% asset_img leap_motion.png LeapMotion %}
+![alt text](2017-01-16-InteractionDesign/leap_motion.png)
 #### Integrated into VR
-{% asset_img leap_motion2.gif LeapMotion %}
+![alt text](2017-01-16-InteractionDesign/leap_motion2.gif)
 
 ### Floor Projection
-{% asset_img FloorProjection.jpg FloorProjection %}
+![alt text](2017-01-16-InteractionDesign/FloorProjection.jpg)
+
 #### Calibration
 This transformation is called an extrinsic matrix(外部矩阵) of a camera. This operation is also called homographic transformation(单应变换).
 [点我参考](http://ksimek.github.io/2012/08/13/introduction/)
-{% asset_img calibration.png calibration %}
-{% asset_img calibration2.png calibration %}
+![alt text](2017-01-16-InteractionDesign/calibration.png)
+![alt text](2017-01-16-InteractionDesign/calibration2.png)
 
 # Our Project - One Piece in Collaborative VR
 
 ### Flow chart
-{% asset_img flow.png FlowChart %}
+![alt text](2017-01-16-InteractionDesign/flow.png )
 
 ### Lo-Fi
-{% asset_img lo_fi.png Lo-Fi %}
+![alt text](2017-01-16-InteractionDesign/lo_fi.png)
 
 ### TRX Room Setting & Hi-Fi
-{% asset_img roomsetting.jpg RoomSetting %}
-{% asset_img hi_fi.png Hi-Fi %}
+![alt text](2017-01-16-InteractionDesign/roomsetting.jpg)
+![alt text](2017-01-16-InteractionDesign/hi_fi.png)
 
 ### Final Demo
 Finally, we invited our classmates to try our creation which bring a brand new experience.
 <video width="658" height="380" src="IDVR.mp4" controls="controls"></video>
 
 ### Team members
-{% asset_img team.jpg team %}
+![alt text](2017-01-16-InteractionDesign/team.jpg)
