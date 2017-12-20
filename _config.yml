@@ -10,6 +10,8 @@
 #   sort_field: 'date'
 #   sort_reverse: true
 
+encoding: UTF-8
+
 # jekyll-paginate configuration
 paginate:            5
 
