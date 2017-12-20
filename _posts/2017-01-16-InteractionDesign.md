@@ -3,9 +3,9 @@ layout: post
 title: "Interaction Design & Collaborative VR"
 author: "乔黎博"
 categories: Design
-date: 2017-01-16 16:21:20
+date: 2017-04-16 16:21:20
 tags: [VR,UX]
-image: VRs.png
+image: 2017-01-16-InteractionDesign/VRs.png
 ---
 
 ![alt text](2017-01-16-InteractionDesign/VRs.png)
