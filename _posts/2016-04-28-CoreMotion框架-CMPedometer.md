@@ -1,10 +1,12 @@
-title: CoreMotion框架-CMPedometer
-date: 2016/4/28 9:27:00
-description: 总结CoreMotion框架中的计步器类在使用中遇到的问题
-categories:
-- iOS
-tags:
-- CoreMotion
+---
+
+layout: post
+title: "CoreMotion框架-CMPedometer"
+author: "乔黎博"
+categories: Coding
+date: 2016-4-28 9:27:00
+tags: [CoreMotion, iOS]
+
 ---
 
 比赛作品涉及计步功能，计步属于健康范畴，当前Apple的HealthKit可以很好的提供健康数据，但是由于涉及隐私，在添加HealthKit时必须要付费的开发者账号，而且包含HealthKit的App审核也更严格。
@@ -15,7 +17,7 @@ tags:
 已经足够清晰明了。顾名思义，该类为了方便获取行走相关数据而设计，除了可用性检查几个关键方法：
 
 ### 生成计步器实时数据
-```
+``` swift
 //Swift
 func startPedometerUpdatesFromDate(_ start: NSDate,
                        withHandler handler: CMPedometerHandler)
@@ -26,7 +28,7 @@ func startPedometerUpdatesFromDate(_ start: NSDate,
 - 可用`stopPedometerUpdates`停止更新
 
 ### 获取历史计步数据
-```
+``` swift
 //Swift
 func queryPedometerDataFromDate(_ start: NSDate,
                              toDate end: NSDate,
@@ -39,7 +41,7 @@ func queryPedometerDataFromDate(_ start: NSDate,
 
 ## CMPedometerHandler
 上面提到的block
-```
+``` swift
 //Swift
 typealias CMPedometerHandler = (CMPedometerData?, NSError?) -> Void
 ```

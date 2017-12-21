@@ -21,6 +21,7 @@ body {
 
 h1{
   font-size: 2rem;
+  line-height: 40px;
 }
 
 h1 a {
@@ -86,7 +87,7 @@ blockquote {
 
 .masthead {
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  /*padding-bottom: 0.5rem;*/
   margin-bottom: 4rem;
   font-family: "Quattrocento Sans", sans-serif;
 }
@@ -113,7 +114,7 @@ blockquote {
   max-width: 100%;
   overflow: hidden;
   border-radius: 5px;
-  margin-bottom: 25px;
+  /*margin-bottom: 25px;*/
 }
 
 .thumbnail-container img{
@@ -126,11 +127,11 @@ blockquote {
 */
 
 .post-container {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .posts {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   padding: 0px;
   list-style: none;
 }
